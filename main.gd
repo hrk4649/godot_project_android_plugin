@@ -11,6 +11,7 @@ func _ready():
         plugin = Engine.get_singleton(plugin_name)
         plugin.connect("wake_up", self, "_on_wake_up")
         plugin.connect("wake_up2", self, "_on_wake_up2")
+        plugin.connect("wake_up3", self, "_on_wake_up3")
         label.text = plugin.getHelloWorldNative()
     else:
         label.text = "Plugin not loaded."
@@ -22,6 +23,10 @@ func _on_wake_up():
 func _on_wake_up2(time):
     label.text = "wake_up at %s" % time
 
+func _on_wake_up3(int_num):
+    label.text = "wake_up: number is %s" % int_num
+
+
 func _on_button_pressed():
     print("_on_button_pressed")
     plugin.signalTest()
@@ -29,3 +34,7 @@ func _on_button_pressed():
 func _on_button2_pressed():
     print("_on_button_2_pressed")
     plugin.signalTest2()
+
+func _on_Button3_pressed():
+    print("_on_Button3_pressed")
+    plugin.signalTest3()
